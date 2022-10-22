@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:block/orientable",
+    "textures": {
+        "bottom": "lightning_block:block/lightning_block_bottom",
+        "top": "lightning_block:block/lightning_block_top",
+        "side": "lightning_block:block/lightning_block_side"
+    }
+}
