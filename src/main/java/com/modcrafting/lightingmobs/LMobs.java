@@ -14,6 +14,18 @@ public class LMobs
     protected static final Logger LOGGER = LogUtils.getLogger();
     protected static final String MODID = "lightningmobs";
     
+    
+    
+	public static Logger getLogger() {
+		return LOGGER;
+	}
+	
+	public static String getModid() {
+		return MODID;
+	}
+
+
+
 	public LMobs()
     {
 		Registry.init();

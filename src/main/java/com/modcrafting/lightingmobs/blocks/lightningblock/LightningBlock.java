@@ -3,6 +3,8 @@
  */
 package com.modcrafting.lightingmobs.blocks.lightningblock;
 
+import com.modcrafting.lightingmobs.LMobs;
+
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
@@ -46,9 +48,9 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		BlockState state = defaultBlockState();
-		Direction dir = context.getHorizontalDirection().getOpposite();
-		state.setValue(FACING, dir);
-		return state;
+		return defaultBlockState()
+			.setValue(
+				FACING, context.getHorizontalDirection()
+		);
 	}
 }
