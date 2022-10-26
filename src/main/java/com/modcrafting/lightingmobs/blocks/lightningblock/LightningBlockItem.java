@@ -27,7 +27,7 @@ public class LightningBlockItem extends BlockItem {
 		Properties properties = new Properties();
 		properties.rarity(Rarity.RARE).stacksTo(MAX_STACK_SIZE).tab(CreativeModeTab.TAB_DECORATIONS);
 		item = new LightningBlockItem(properties);
-		item.setRegistryName("lightning_block_item");
+		item.setRegistryName(LightningBlock.getBlock().getRegistryName());
 		return item;
 	}
 	
