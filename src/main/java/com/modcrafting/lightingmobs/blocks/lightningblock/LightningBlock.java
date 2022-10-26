@@ -3,10 +3,11 @@
  */
 package com.modcrafting.lightingmobs.blocks.lightningblock;
 
-import com.modcrafting.lightingmobs.LMobs;
+import org.antlr.v4.parse.BlockSetTransformer.setElement_return;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -31,13 +32,14 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 	
 	public static LightningBlock init() {
 		Material lbMaterial = new Material(MaterialColor.NONE, false, true, false, true, false, false, PushReaction.NORMAL);
-		return new LightningBlock(Properties.of(lbMaterial)
-				.destroyTime(20)
+		LightningBlock block = new LightningBlock(Properties.of(lbMaterial)
+				.destroyTime(10)
 				.explosionResistance(INDESTRUCTIBLE)
 				.requiresCorrectToolForDrops()
-				.sound(SoundType.STONE)
+				.sound(SoundType.DEEPSLATE)
 				.strength(2, 300)
 				.lightLevel((state) -> 6));
+		return block;
 	}
 	
 	@Override
