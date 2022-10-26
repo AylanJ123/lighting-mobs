@@ -3,6 +3,8 @@
  */
 package com.modcrafting.lightingmobs.blocks.lightningblock;
 
+import com.modcrafting.lightingmobs.Registry;
+
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Rarity;
@@ -13,22 +15,14 @@ import net.minecraft.world.item.Rarity;
  */
 public class LightningBlockItem extends BlockItem {
 	
-	private static LightningBlockItem item;
-	
-	public static LightningBlockItem getItem() {
-		return item;
-	}
-	
 	private LightningBlockItem(Properties properties) {
-		super(LightningBlock.init(), properties);
+		super(Registry.LIGHTNING_BLOCK.get(), properties);
 	}
 	
 	public static LightningBlockItem init() {
 		Properties properties = new Properties();
 		properties.rarity(Rarity.RARE).stacksTo(MAX_STACK_SIZE).tab(CreativeModeTab.TAB_DECORATIONS);
-		item = new LightningBlockItem(properties);
-		item.setRegistryName(LightningBlock.getBlock().getRegistryName());
-		return item;
+		return new LightningBlockItem(properties);
 	}
 	
 }

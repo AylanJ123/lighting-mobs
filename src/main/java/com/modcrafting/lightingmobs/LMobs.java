@@ -7,20 +7,26 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod("lightningmobs")
+@Mod(LMobs.MODID)
 public class LMobs
 {
-    //slf4j logger
-    public static final Logger LOGGER = LogUtils.getLogger();
+	
+    protected static final Logger LOGGER = LogUtils.getLogger();
+    protected static final String MODID = "lightningmobs";
     
-    public LMobs()
+	public LMobs()
     {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        MinecraftForge.EVENT_BUS.register(this);
+		Registry.init();
     }
+	
+}
+
+/*
+	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+    MinecraftForge.EVENT_BUS.register(this);
     
     private void setup(final FMLCommonSetupEvent event)
     {
         LOGGER.info("STARTING PREINIT");
     }
-}
+*/
