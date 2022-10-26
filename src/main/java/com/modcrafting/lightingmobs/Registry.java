@@ -20,7 +20,7 @@ public class Registry {
 	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LMobs.MODID);
 	
 	public static final RegistryObject<Block> LIGHTNING_BLOCK = BLOCKS.register("lightning_block", () -> LightningBlock.init());
-	public static final RegistryObject<BlockItem> LIGHTNING_BLOCK_ITEM = registerBlockItem(LIGHTNING_BLOCK, () -> LightningBlockItem.init());
+	public static final RegistryObject<BlockItem> LIGHTNING_BLOCK_ITEM = registerBlockItem("lightning_block", () -> LightningBlockItem.init());
 	
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -28,8 +28,8 @@ public class Registry {
 		ITEMS.register(bus);
 	}
 	
-	private static RegistryObject<BlockItem> registerBlockItem(RegistryObject<Block> regBlock, Supplier<? extends BlockItem> sup) {
-		return ITEMS.register(regBlock.get().getRegistryName().getPath(), sup);
+	private static RegistryObject<BlockItem> registerBlockItem(String registryName, Supplier<? extends BlockItem> sup) {
+		return ITEMS.register(registryName, sup);
 	}
 	
 }
