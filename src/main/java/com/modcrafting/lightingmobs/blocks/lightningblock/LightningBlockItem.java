@@ -30,5 +30,5 @@ public class LightningBlockItem extends BlockItem {
 		item.setRegistryName("lightning_block_item");
 		return item;
 	}
-
+	
 }

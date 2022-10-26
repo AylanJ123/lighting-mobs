@@ -2,7 +2,11 @@
  * 
  */
 package com.modcrafting.lightingmobs.blocks.lightningblock;
+
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -14,7 +18,7 @@ import net.minecraft.world.level.material.PushReaction;
  * @author AylanJ123
  *
  */
-public class LightningBlock extends Block {
+public class LightningBlock extends HorizontalDirectionalBlock {
 	
 	private static LightningBlock block;
 	
@@ -24,6 +28,9 @@ public class LightningBlock extends Block {
 	
 	private LightningBlock(Properties properties) {
 		super(properties);
+		this.registerDefaultState(
+			this.stateDefinition.any().setValue(FACING, Direction.NORTH)
+		);
 	}
 	
 	public static LightningBlock init() {
@@ -35,7 +42,15 @@ public class LightningBlock extends Block {
 	
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+		builder.add(FACING);
 		super.createBlockStateDefinition(builder);
 	}
 	
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockState state = defaultBlockState();
+		Direction dir = state.getBedDirection(context.getLevel(), context.getClickedPos());
+		state.setValue(FACING, dir);
+		return state;
+	}
 }

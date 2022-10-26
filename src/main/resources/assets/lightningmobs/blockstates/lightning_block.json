@@ -1,18 +1,18 @@
 {
     "variants": {
         "facing=east": {
-        	"model": "lightningmobs:block/lightning_block",
+        	"model": "lightningmobs:lightning_block",
         	"y": 90
         },
         "facing=north": {
-        	"model": "lightningmobs:block/lightning_block"
+        	"model": "lightningmobs:lightning_block"
         },
         "facing=south": {
-        	"model": "lightningmobs:block/lightning_block",
+        	"model": "lightningmobs:lightning_block",
         	"y": 180
         },
         "facing=west": {
-        	"model": "lightningmobs:block/lightning_block",
+        	"model": "lightningmobs:lightning_block",
         	"y": 270
         }
     }
