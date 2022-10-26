@@ -47,7 +47,7 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		BlockState state = defaultBlockState();
-		Direction dir = state.getBedDirection(context.getLevel(), context.getClickedPos());
+		Direction dir = context.getHorizontalDirection().getOpposite();
 		state.setValue(FACING, dir);
 		return state;
 	}

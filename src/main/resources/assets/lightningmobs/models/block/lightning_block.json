@@ -1,8 +1,9 @@
 {
 	"parent": "block/orientable",
     "textures": {
-        "bottom": "lightning_block:blocks/lightning_block_bottom",
-        "top": "lightning_block:blocks/lightning_block_top",
-        "side": "lightning_block:blocks/lightning_block_side"
+        "bottom": "lightningmobs:block/lightning_block_bottom",
+        "top": "lightningmobs:block/lightning_block_top",
+        "side": "lightningmobs:block/lightning_block_side",
+        "front": "lightningmobs:block/lightning_block_side"
     }
 }
