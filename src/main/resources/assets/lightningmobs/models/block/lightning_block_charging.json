@@ -1,0 +1,9 @@
+{
+	"parent": "block/orientable",
+    "textures": {
+        "bottom": "lightningmobs:block/lightning_block_bottom",
+        "top": "lightningmobs:block/lightning_block_top_charging",
+        "side": "lightningmobs:block/lightning_block_side",
+        "front": "lightningmobs:block/lightning_block_side"
+    }
+}

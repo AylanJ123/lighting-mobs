@@ -3,16 +3,20 @@
  */
 package com.modcrafting.lightingmobs.blocks.lightningblock;
 
-import org.antlr.v4.parse.BlockSetTransformer.setElement_return;
+import com.modcrafting.lightingmobs.LMobs;
 
+
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -23,10 +27,14 @@ import net.minecraft.world.level.material.PushReaction;
  */
 public class LightningBlock extends HorizontalDirectionalBlock {
 	
+	private static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
+	
+	private static final int COOLDOWN = 100;
+	
 	private LightningBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(
-			this.stateDefinition.any().setValue(FACING, Direction.NORTH)
+			this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(CAN_SUMMON, true)
 		);
 	}
 	
@@ -45,6 +53,7 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(FACING);
+		builder.add(CAN_SUMMON);
 		super.createBlockStateDefinition(builder);
 	}
 	
@@ -55,4 +64,13 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 				FACING, context.getHorizontalDirection()
 		);
 	}
+	
+	@Override
+	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+		if (level.isClientSide()) return;
+		if (!state.getValue(CAN_SUMMON)) return;
+		level.setBlock(pos, state.setValue(CAN_SUMMON, false), UPDATE_ALL);
+		LMobs.getLogger().debug("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY");
+	}
+	
 }

@@ -1,18 +1,33 @@
 {
     "variants": {
-        "facing=east": {
+        "facing=east,can_summon=true": {
         	"model": "lightningmobs:block/lightning_block",
         	"y": 90
         },
-        "facing=north": {
+        "facing=north,can_summon=true": {
         	"model": "lightningmobs:block/lightning_block"
         },
-        "facing=south": {
+        "facing=south,can_summon=true": {
         	"model": "lightningmobs:block/lightning_block",
         	"y": 180
         },
-        "facing=west": {
+        "facing=west,can_summon=true": {
         	"model": "lightningmobs:block/lightning_block",
+        	"y": 270
+        },
+        "facing=east,can_summon=false": {
+        	"model": "lightningmobs:block/lightning_block_charging",
+        	"y": 90
+        },
+        "facing=north,can_summon=false": {
+        	"model": "lightningmobs:block/lightning_block_charging"
+        },
+        "facing=south,can_summon=false": {
+        	"model": "lightningmobs:block/lightning_block_charging",
+        	"y": 180
+        },
+        "facing=west,can_summon=false": {
+        	"model": "lightningmobs:block/lightning_block_charging",
         	"y": 270
         }
     }
