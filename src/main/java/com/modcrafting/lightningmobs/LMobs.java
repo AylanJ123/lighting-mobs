@@ -1,4 +1,4 @@
-package com.modcrafting.lightingmobs;
+package com.modcrafting.lightningmobs;
 
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.common.Mod;

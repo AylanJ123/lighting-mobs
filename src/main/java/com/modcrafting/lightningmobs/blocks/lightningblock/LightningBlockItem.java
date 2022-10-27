@@ -1,9 +1,9 @@
 /**
  * 
  */
-package com.modcrafting.lightingmobs.blocks.lightningblock;
+package com.modcrafting.lightningmobs.blocks.lightningblock;
 
-import com.modcrafting.lightingmobs.Registry;
+import com.modcrafting.lightningmobs.Registry;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;

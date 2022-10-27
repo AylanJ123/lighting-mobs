@@ -1,9 +1,9 @@
-package com.modcrafting.lightingmobs;
+package com.modcrafting.lightningmobs;
 
 import java.util.function.Supplier;
 
-import com.modcrafting.lightingmobs.blocks.lightningblock.LightningBlock;
-import com.modcrafting.lightingmobs.blocks.lightningblock.LightningBlockItem;
+import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
+import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

@@ -1,10 +1,9 @@
 /**
  * 
  */
-package com.modcrafting.lightingmobs.blocks.lightningblock;
+package com.modcrafting.lightningmobs.blocks.lightningblock;
 
-import com.modcrafting.lightingmobs.LMobs;
-
+import com.modcrafting.lightningmobs.LMobs;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,13 +22,10 @@ import net.minecraft.world.level.material.PushReaction;
 
 /**
  * @author AylanJ123
- *
  */
 public class LightningBlock extends HorizontalDirectionalBlock {
 	
 	private static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
-	
-	private static final int COOLDOWN = 100;
 	
 	private LightningBlock(Properties properties) {
 		super(properties);
