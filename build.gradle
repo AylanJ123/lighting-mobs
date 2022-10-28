@@ -18,7 +18,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-version = '0.0.2a'
+version = '0.0.1a'
 group = 'com.modcrafting.lightningmobs' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'lightningmobs'
 
@@ -63,10 +63,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'lightningmobs'
 
             mods {
-                examplemod {
+                lightningmobs {
                     source sourceSets.main
                 }
             }
@@ -80,10 +80,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'examplemod'
+            property 'forge.enabledGameTestNamespaces', 'lightningmobs'
 
             mods {
-                examplemod {
+                lightningmobs {
                     source sourceSets.main
                 }
             }
@@ -111,7 +111,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'lightningmobs'
 
             mods {
-                examplemod {
+                lightningmobs {
                     source sourceSets.main
                 }
             }
