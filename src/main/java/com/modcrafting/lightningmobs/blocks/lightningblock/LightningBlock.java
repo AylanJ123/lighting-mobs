@@ -32,6 +32,10 @@ public class LightningBlock extends HorizontalDirectionalBlock implements Entity
 	
 	private static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
 	
+	public static BooleanProperty getCanSummon() {
+		return CAN_SUMMON;
+	}
+
 	private LightningBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(
@@ -71,7 +75,7 @@ public class LightningBlock extends HorizontalDirectionalBlock implements Entity
 		if (level.isClientSide()) return;
 		if (!state.getValue(CAN_SUMMON)) return;
 		level.setBlock(pos, state.setValue(CAN_SUMMON, false), UPDATE_ALL);
-		LMobs.getLogger().debug("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY");
+		((LightningBlockEntity)level.getBlockEntity(pos)).summon(level, pos, state);
 	}
 
 	@Override
