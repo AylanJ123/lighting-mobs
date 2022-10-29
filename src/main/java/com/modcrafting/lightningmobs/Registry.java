@@ -8,6 +8,7 @@ import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
 import com.modcrafting.lightningmobs.items.lightningcharge.LightningCharge;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShard;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShardLootModifierSerializer;
+import com.modcrafting.lightningmobs.items.lightningsword.LightningSword;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -40,6 +41,8 @@ public class Registry {
 	);
 	
 	public static final RegistryObject<Item> LIGHTNING_CARGE = ITEMS.register("lightning_charge", () -> LightningCharge.init());
+	
+	public static final RegistryObject<Item> LIGHTNING_SWORD = ITEMS.register("lightning_sword", () -> LightningSword.init());
 	
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

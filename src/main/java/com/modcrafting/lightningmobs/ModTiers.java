@@ -5,7 +5,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum ModTiers implements Tier {
-	LIGHTING(3, 200, 8.5f, 3.5f, 15, Registry.LIGHTNING_SHARD.get());
+	LIGHTNING(3, 200, 8.5f, 3.5f, 15, Registry.LIGHTNING_SHARD.get());
 
 	private final int level;
 	private final int uses;
