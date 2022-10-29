@@ -1,7 +1,6 @@
 package com.modcrafting.lightningmobs.items.lightningshard;
 
 import com.google.gson.JsonObject;
-import com.modcrafting.lightningmobs.LMobs;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;

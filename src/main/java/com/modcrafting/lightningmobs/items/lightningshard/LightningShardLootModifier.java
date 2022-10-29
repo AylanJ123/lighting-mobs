@@ -2,7 +2,6 @@ package com.modcrafting.lightningmobs.items.lightningshard;
 
 import java.util.List;
 
-import com.modcrafting.lightningmobs.LMobs;
 import com.modcrafting.lightningmobs.Registry;
 import com.modcrafting.lightningmobs.configs.ServerConfigSpec;
 
