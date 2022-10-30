@@ -12,6 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import java.util.Arrays;
 import java.util.stream.Stream;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -43,23 +44,30 @@ public class LMobs
 	private void processIMC(final InterModProcessEvent event) {
 		Stream<IMCMessage> msgs = event.getIMCStream();
 		msgs.forEach(LMobs::processMsg);
-		UnstableLightning.upgradeables.add(Pair.of("minecraft:chicken", "minecraft:creeper"));
 	}
 	
 	private void loaded(final FMLLoadCompleteEvent event) {
-		LOGGER.info("Mod finished loading");
+		for (String str : ServerConfigSpec.UPGRADEABLE_MOBS.get())
+			addMobCombo(str);
+		LOGGER.info("lightningmobs/SUCCESS(Mod Life Cycle): Mod finished loading. Upgradeable list has been loaded: "
+			+ Arrays.toString(ServerConfigSpec.UPGRADEABLE_MOBS.get().toArray())
+		);
 	}
 	
 	private static void processMsg(IMCMessage msg) {
 		try {
 			String str = (String) msg.messageSupplier().get();
-			String[] separated = str.split("#");
-			UnstableLightning.upgradeables.add(Pair.of(separated[0], separated[1]));
+			addMobCombo(str);
 		} catch (ClassCastException e) {
-			LOGGER.error(String.format("The sender %s attempted to send something that is not an string: ", msg.senderModId(), msg.messageSupplier().get().getClass().toString()));
+			LOGGER.error(String.format("lightningmobs/ERROR(IMC): The sender %s attempted to send something that is not a String: %s", msg.senderModId(), msg.messageSupplier().get().getClass().getName()));
 		} catch (Exception e) {
-			LOGGER.error("Something else happened: " + e.getMessage());
+			LOGGER.error("lightningmobs/ERROR(IMC): Something else happened: " + e.getMessage());
 		}
+	}
+	
+	private static void addMobCombo(String str) {
+		String[] separated = str.split("#");
+		UnstableLightning.upgradeables.add(Pair.of(separated[0], separated[1]));
 	}
 	
 }

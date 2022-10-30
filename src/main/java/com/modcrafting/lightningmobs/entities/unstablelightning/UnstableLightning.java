@@ -43,7 +43,7 @@ public class UnstableLightning extends Entity {
 	 */
 	public void tick() {
 		super.tick();
-		if (this.life == 2) {
+		if (this.life == 3) {
 			if (this.level.isClientSide()) {
 				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_THUNDER,
 						SoundSource.WEATHER, 10000.0F, 0.8F + this.random.nextFloat() * 0.2F, false);
@@ -63,13 +63,13 @@ public class UnstableLightning extends Entity {
 		}
 		if (this.life >= 0) {
 			if (this.level.isClientSide()) {
-				this.level.setSkyFlashTime(2);
-			} else {
+				this.level.setSkyFlashTime(5);
+			} else if (hitEntities.isEmpty()){
 				List<Entity> list1 = this.level
 					.getEntities(
 						this, new AABB(
-							this.getX() - 3.0D, this.getY() - 3.0D, this.getZ() - 3.0D,
-							this.getX() + 3.0D, this.getY() + 6.0D + 3.0D, this.getZ() + 3.0D),
+							this.getX() - 1.0D, this.getY() - 1.0D, this.getZ() - 1.0D,
+							this.getX() + 1.0D, this.getY() + 2.0D + 1.0D, this.getZ() + 2.0D),
 						Entity::isAlive
 					);
 				this.hitEntities.addAll(list1);
@@ -99,9 +99,9 @@ public class UnstableLightning extends Entity {
 	public UnstableLightning(EntityType<? extends UnstableLightning> type, Level level) {
 		super(type, level);
 		this.noCulling = true;
-		this.life = 2;
+		this.life = 5;
 		this.seed = this.random.nextLong();
-		this.flashes = this.random.nextInt(3) + 1;
+		this.flashes = this.random.nextInt(5) + 3;
 	}
 
 	public static void SpawnLightning(Level level, BlockPos pos) {
@@ -115,7 +115,6 @@ public class UnstableLightning extends Entity {
 	}
 
 	private static void lookForUpgradeable(Entity entity, BlockPos pos) {
-		LMobs.getLogger().debug("Hey! This hit something");
 		boolean didSpawn = false;
 		boolean shouldSpawn = false;
 		for (Pair<String, String> pair : upgradeables) {
@@ -129,7 +128,7 @@ public class UnstableLightning extends Entity {
 						entity.discard();
 						Entity spawnedEntity = map.getValue().create(entity.level);
 						spawnedEntity.moveTo(Vec3.upFromBottomCenterOf(pos, 1));
-						((LivingEntity) spawnedEntity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 255));
+						((LivingEntity) spawnedEntity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 255));
 						entity.level.addFreshEntity(spawnedEntity);
 						break;
 					}
@@ -151,7 +150,7 @@ public class UnstableLightning extends Entity {
 	
 	private static String lookForEntityInList(String str) {
 		for (Pair<String, String> pair : upgradeables) {
-			if (pair.getRight().equals(str)) return pair.getRight();
+			if (pair.getLeft().equals(str)) return pair.getRight();
 		}
 		return "<missing entry>";
 	}
