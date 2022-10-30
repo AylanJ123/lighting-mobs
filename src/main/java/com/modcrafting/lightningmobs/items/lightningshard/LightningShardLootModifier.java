@@ -6,7 +6,6 @@ import com.modcrafting.lightningmobs.Registry;
 import com.modcrafting.lightningmobs.configs.ServerConfigSpec;
 
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tiers;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.loot.LootModifier;

@@ -1,7 +1,7 @@
 package com.modcrafting.lightningmobs.blocks.lightningblock;
 
 import com.modcrafting.lightningmobs.Registry;
-import com.modcrafting.lightningmobs.entities.UnstableLightning;
+import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -22,12 +22,10 @@ public class LightningBlockEntity extends BlockEntity {
 	
 	public LightningBlockEntity(BlockPos pos, BlockState state) {
 		super(Registry.LIGHTNING_BLOCK_ENTITY.get(), pos, state);
-		/*level.setBlock(pos, state.setValue(
-			LightningBlock.getCanSummon(), true
-		), Block.UPDATE_ALL);*/
 	}
 	
 	public void summon(Level level, BlockPos pos, BlockState state) {
+		if (level.isClientSide()) return;
 		counter = 0;
 		charged = false;
 		level.setBlock(
@@ -36,7 +34,7 @@ public class LightningBlockEntity extends BlockEntity {
 			),
 			Block.UPDATE_ALL
 		);
-		UnstableLightning.SpawnLightning(level);
+		UnstableLightning.SpawnLightning(level, pos);
 	}
 	
 	public static void tick(Level level, BlockPos pos, BlockState state, BlockEntity blockEntity) {

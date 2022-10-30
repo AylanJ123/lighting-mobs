@@ -5,13 +5,13 @@ import java.util.function.Supplier;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockEntity;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
-import com.modcrafting.lightningmobs.entities.UnstableLightning;
+import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 import com.modcrafting.lightningmobs.items.lightningcharge.LightningCharge;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShard;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShardLootModifierSerializer;
 import com.modcrafting.lightningmobs.items.lightningsword.LightningSword;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
@@ -51,11 +51,7 @@ public class Registry {
 	
 	public static final RegistryObject<EntityType<UnstableLightning>> UNSTABLE_LIGHTNING = ENTITIES.register(
 		"unstable_lightning", (Supplier<? extends EntityType<UnstableLightning>>)
-		() -> {
-			EntityType.Builder<UnstableLightning> builder = EntityType.Builder.of(UnstableLightning::new, MobCategory.AMBIENT);
-			EntityType<UnstableLightning> type = builder.build(new ResourceLocation(LMobs.MODID + ":unstable_lightning").toString());
-			return type;
-		}
+		() -> configureLightning(EntityType.Builder.of(UnstableLightning::new, MobCategory.MISC)).build("")
 	);
 	
 	public static void init() {
@@ -69,6 +65,15 @@ public class Registry {
 	
 	private static RegistryObject<BlockItem> registerBlockItem(String registryName, Supplier<? extends BlockItem> sup) {
 		return ITEMS.register(registryName, sup);
+	}
+	
+	private static EntityType.Builder<UnstableLightning> configureLightning(EntityType.Builder<UnstableLightning> builder) {
+		return builder.sized(1, 1)
+			.canSpawnFarFromPlayer()
+			.noSummon().noSave()
+			.fireImmune()
+			.clientTrackingRange(16)
+			.setShouldReceiveVelocityUpdates(false);
 	}
 	
 }

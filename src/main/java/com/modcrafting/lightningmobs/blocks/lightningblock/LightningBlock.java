@@ -3,9 +3,7 @@
  */
 package com.modcrafting.lightningmobs.blocks.lightningblock;
 
-import com.modcrafting.lightningmobs.LMobs;
 import com.modcrafting.lightningmobs.Registry;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
