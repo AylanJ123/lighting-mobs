@@ -1,8 +1,8 @@
 {
 	"block.lightningmobs.lightning_block": "Lightning Block",
+	"block.lightningmobs.electric_lapis_block": "Electric Lapis Block",
 	"item.lightningmobs.lightning_shard": "Lightning Shard",
 	"item.lightningmobs.lightning_charge": "Lightning Charge",
 	"item.lightningmobs.lightning_sword": "Lightning Sword",
-	"itemGroup.lightningMobsTab": "Lightning Mobs",
-	"block.lightningmobs.electric_lapis_block": "Electric Lapis Block"
+	"itemGroup.lightningMobsTab": "Lightning Mobs"
 }

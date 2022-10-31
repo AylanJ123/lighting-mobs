@@ -47,7 +47,7 @@ public class LightningBlock extends HorizontalDirectionalBlock implements Entity
 				.destroyTime(10)
 				.explosionResistance(INDESTRUCTIBLE)
 				.requiresCorrectToolForDrops()
-				.sound(SoundType.DEEPSLATE)
+				.sound(SoundType.METAL)
 				.strength(2, 300)
 				.lightLevel((state) -> 6));
 		return block;

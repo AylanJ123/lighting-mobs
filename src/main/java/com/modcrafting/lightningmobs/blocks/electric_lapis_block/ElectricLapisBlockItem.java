@@ -1,17 +1,15 @@
-package com.modcrafting.lightningmobs.blocks.lightningblock;
+package com.modcrafting.lightningmobs.blocks.electric_lapis_block;
 
 import com.modcrafting.lightningmobs.Registry;
 
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item.Properties;
 
 public class ElectricLapisBlockItem extends BlockItem{
-
+	
 	@Override
 	public String getDescriptionId() {
-		return "block.lightningmobs.lightning_block";
+		return "block.lightningmobs.electric_lapis_block";
 	}
 	
 	private ElectricLapisBlockItem(Properties properties) {

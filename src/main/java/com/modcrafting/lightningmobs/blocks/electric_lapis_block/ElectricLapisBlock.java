@@ -1,4 +1,4 @@
-package com.modcrafting.lightningmobs.blocks.lightningblock;
+package com.modcrafting.lightningmobs.blocks.electric_lapis_block;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -7,11 +7,6 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
 
 public class ElectricLapisBlock extends Block {
-	
-	@Override
-	public String getDescriptionId() {
-		return "block.lightningmobs.electric_lightning_block";
-	}
 	
 	private ElectricLapisBlock(Properties properties) {
 		super(properties);

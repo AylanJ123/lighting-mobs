@@ -13,8 +13,8 @@
       "item": "lightningmobs:lightning_shard"
     },
     "C": {
-      "item": "minecraft:cobblestone"
-    }
+    	"tag": "minecraft:stone_tool_materials"
+    }	
   },
   "result": {
     "item": "lightningmobs:electric_lapis_block",

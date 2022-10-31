@@ -6,7 +6,6 @@ package com.modcrafting.lightningmobs.blocks.lightningblock;
 import com.modcrafting.lightningmobs.Registry;
 
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Rarity;
 
 /**

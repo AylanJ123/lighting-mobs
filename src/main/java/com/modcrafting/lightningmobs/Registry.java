@@ -2,8 +2,8 @@ package com.modcrafting.lightningmobs;
 
 import java.util.function.Supplier;
 
-import com.modcrafting.lightningmobs.blocks.lightningblock.ElectricLapisBlock;
-import com.modcrafting.lightningmobs.blocks.lightningblock.ElectricLapisBlockItem;
+import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBlock;
+import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBlockItem;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockEntity;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;

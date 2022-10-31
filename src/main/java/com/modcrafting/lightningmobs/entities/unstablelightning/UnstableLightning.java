@@ -16,10 +16,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -43,7 +45,7 @@ public class UnstableLightning extends Entity {
 						SoundSource.WEATHER, 2.25F, 0.8F + this.random.nextFloat() * 0.2125F, true);
 			} else if (life == 2) {
 				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), Registry.LEFTOVER_CHARGE.get(),
-						SoundSource.WEATHER, 2.25F, 0.4F + this.random.nextFloat() * 0.2F, true);
+						SoundSource.WEATHER, 3.75F, 0.3F + this.random.nextFloat() * 0.1925F, true);
 			}
 		}
 		--this.life;
@@ -68,6 +70,13 @@ public class UnstableLightning extends Entity {
 						Entity::isAlive
 					);
 				alreadyHit = true;
+				AreaEffectCloud cloud = EntityType.AREA_EFFECT_CLOUD.create(level);
+				cloud.setPotion(Potions.STRONG_SLOWNESS);
+				cloud.moveTo(position());
+				cloud.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 6));
+				cloud.setRadius(3);
+				cloud.setDuration(60);
+				level.addFreshEntity(cloud);
 				for(Entity e : list1) lookForUpgradeable(e, this.blockPosition());
 			}
 		}
@@ -101,13 +110,13 @@ public class UnstableLightning extends Entity {
 
 	public static void SpawnLightning(Level level, BlockPos pos) {
 		UnstableLightning lightning = Registry.UNSTABLE_LIGHTNING.get().create(level);
-		lightning.moveTo(Vec3.atBottomCenterOf(pos));
+		lightning.moveTo(Vec3.atBottomCenterOf(pos.above()));
 		level.addFreshEntity(lightning);
 	}
 	
 	public static void SpawnVanillaLightning(Level level, BlockPos pos) {
 		LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
-		lightning.moveTo(Vec3.atBottomCenterOf(pos));
+		lightning.moveTo(Vec3.atBottomCenterOf(pos.above()));
 		level.addFreshEntity(lightning);
 	}
 

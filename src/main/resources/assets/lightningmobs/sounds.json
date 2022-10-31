@@ -4,5 +4,11 @@
     "sounds": [
       "lightningmobs:leftover_charge"
     ]
+  },
+  "thunder": {
+    "subtitle": "sounds.lightningmobs.thunder",
+    "sounds": [
+      "lightningmobs:thunder"
+    ]
   }
 }
