@@ -1,4 +1,6 @@
-package com.modcrafting.lightningmobs;
+package com.modcrafting.lightningmobs.helpers;
+
+import com.modcrafting.lightningmobs.Registry;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;

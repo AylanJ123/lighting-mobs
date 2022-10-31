@@ -1,7 +1,8 @@
 package com.modcrafting.lightningmobs.items.lightningshard;
 
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
-
+import com.modcrafting.lightningmobs.helpers.ItemHelpers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,23 +37,34 @@ public class LightningShard extends Item {
 	
 	@Override
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand usedHand) {
-		if (player.level.isClientSide()) return InteractionResult.SUCCESS;
-		if (player.level.random.nextFloat() <= SUMMON_CHANCE) {
-			UnstableLightning.SpawnLightning(player.level, target.blockPosition());
-		}
-		if (!player.isCreative()) stack.setCount(stack.getCount() - 1);
-		return InteractionResult.SUCCESS;
+		return ItemHelpers.consumeAndCallback(player.level, player, stack, () -> {
+			if (player.level.random.nextFloat() <= chancesOnWeather(player.level, target.blockPosition())) {
+				if (player.level.isRainingAt(target.blockPosition()))
+					UnstableLightning.SpawnLightning(player.level, target.blockPosition());
+				else
+					UnstableLightning.SpawnVanillaLightning(player.level, target.blockPosition());
+			}
+		});
 	}
 	
 	@Override
 	public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
-		Level level = context.getLevel();
-		if (level.isClientSide()) return InteractionResult.SUCCESS;
-		if (level.random.nextFloat() <= SUMMON_CHANCE) {
-			UnstableLightning.SpawnLightning(level, context.getClickedPos());
-		}
-		if (!context.getPlayer().isCreative()) stack.setCount(stack.getCount() - 1);
-		return InteractionResult.SUCCESS;
+		return ItemHelpers.consumeAndCallback(context.getLevel(), context.getPlayer(), stack, () -> {
+			Level level = context.getLevel();
+			if (level.random.nextFloat() <= chancesOnWeather(context.getLevel(), context.getClickedPos())) {
+				if (context.getLevel().isRainingAt(context.getClickedPos().above()))
+					UnstableLightning.SpawnLightning(level, context.getClickedPos());
+				else
+					UnstableLightning.SpawnVanillaLightning(level, context.getClickedPos());
+			}
+		});
+	}
+	
+	private static float chancesOnWeather(Level level, BlockPos pos) {
+		if (!level.isRainingAt(pos)) return SUMMON_CHANCE;
+		if (level.isThundering()) return SUMMON_CHANCE * 2f;
+		if (level.isRaining()) return SUMMON_CHANCE * 1.5f;
+		return SUMMON_CHANCE;
 	}
 	
 }

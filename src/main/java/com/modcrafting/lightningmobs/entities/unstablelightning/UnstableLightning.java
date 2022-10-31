@@ -3,11 +3,7 @@ package com.modcrafting.lightningmobs.entities.unstablelightning;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.tuple.Pair;
-import com.google.common.collect.Sets;
 import com.modcrafting.lightningmobs.LMobs;
 import com.modcrafting.lightningmobs.Registry;
 import net.minecraft.core.BlockPos;
@@ -15,7 +11,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -23,6 +18,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -35,20 +31,16 @@ public class UnstableLightning extends Entity {
 	private int life;
 	public long seed;
 	private int flashes;
-	@Nullable private ServerPlayer cause;
-	private final Set<Entity> hitEntities = Sets.newHashSet();
+	boolean alreadyHit = false;
 	
-	/**
-	 * Called to update the entity's position/logic.
-	 */
 	public void tick() {
 		super.tick();
-		if (this.life == 3) {
+		if (this.life == 5) {
 			if (this.level.isClientSide()) {
 				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_THUNDER,
-						SoundSource.WEATHER, 10000.0F, 0.8F + this.random.nextFloat() * 0.2F, false);
+						SoundSource.WEATHER, 10250.0F, 1.1F + this.random.nextFloat() * 0.2125F, true);
 				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT,
-						SoundSource.WEATHER, 2.0F, 0.5F + this.random.nextFloat() * 0.2F, false);
+						SoundSource.WEATHER, 2.25F, 0.8F + this.random.nextFloat() * 0.2125F, true);
 			}
 		}
 		--this.life;
@@ -64,7 +56,7 @@ public class UnstableLightning extends Entity {
 		if (this.life >= 0) {
 			if (this.level.isClientSide()) {
 				this.level.setSkyFlashTime(5);
-			} else if (hitEntities.isEmpty()){
+			} else if (!alreadyHit){
 				List<Entity> list1 = this.level
 					.getEntities(
 						this, new AABB(
@@ -72,7 +64,7 @@ public class UnstableLightning extends Entity {
 							this.getX() + 1.0D, this.getY() + 2.0D + 1.0D, this.getZ() + 2.0D),
 						Entity::isAlive
 					);
-				this.hitEntities.addAll(list1);
+				alreadyHit = true;
 				for(Entity e : list1) lookForUpgradeable(e, this.blockPosition());
 			}
 		}
@@ -101,7 +93,7 @@ public class UnstableLightning extends Entity {
 		this.noCulling = true;
 		this.life = 5;
 		this.seed = this.random.nextLong();
-		this.flashes = this.random.nextInt(5) + 3;
+		this.flashes = this.random.nextInt(5) + 5;
 	}
 
 	public static void SpawnLightning(Level level, BlockPos pos) {
@@ -109,9 +101,11 @@ public class UnstableLightning extends Entity {
 		lightning.moveTo(Vec3.atBottomCenterOf(pos));
 		level.addFreshEntity(lightning);
 	}
-
-	public Stream<Entity> getHitEntities() {
-		return hitEntities.stream().filter(Entity::isAlive);
+	
+	public static void SpawnVanillaLightning(Level level, BlockPos pos) {
+		LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
+		lightning.moveTo(Vec3.atBottomCenterOf(pos));
+		level.addFreshEntity(lightning);
 	}
 
 	private static void lookForUpgradeable(Entity entity, BlockPos pos) {

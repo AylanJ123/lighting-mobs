@@ -1,6 +1,6 @@
 package com.modcrafting.lightningmobs.items.lightningsword;
 
-import com.modcrafting.lightningmobs.ModTiers;
+import com.modcrafting.lightningmobs.helpers.ModTiers;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Rarity;
