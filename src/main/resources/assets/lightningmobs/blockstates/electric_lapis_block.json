@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+        	"model": "lightningmobs:block/electric_lapis_block"
+        }
+    }
+}

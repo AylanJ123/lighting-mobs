@@ -3,5 +3,6 @@
 	"item.lightningmobs.lightning_shard": "Lightning Shard",
 	"item.lightningmobs.lightning_charge": "Lightning Charge",
 	"item.lightningmobs.lightning_sword": "Lightning Sword",
-	"itemGroup.lightningMobsTab": "Lightning Mobs"
+	"itemGroup.lightningMobsTab": "Lightning Mobs",
+	"block.lightningmobs.electric_lapis_block": "Electric Lapis Block"
 }

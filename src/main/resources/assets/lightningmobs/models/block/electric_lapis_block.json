@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+      "textures": {
+        	"all": "lightningmobs:block/lightning_block_bottom"
+    }
+}

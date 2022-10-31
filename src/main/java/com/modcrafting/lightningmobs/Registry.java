@@ -2,6 +2,8 @@ package com.modcrafting.lightningmobs;
 
 import java.util.function.Supplier;
 
+import com.modcrafting.lightningmobs.blocks.lightningblock.ElectricLapisBlock;
+import com.modcrafting.lightningmobs.blocks.lightningblock.ElectricLapisBlockItem;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockEntity;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
@@ -43,6 +45,9 @@ public class Registry {
 		"lightning_block_entity", (Supplier<? extends BlockEntityType<LightningBlockEntity>>)
 		() -> BlockEntityType.Builder.of(LightningBlockEntity::new, LIGHTNING_BLOCK.get()).build(null)
 	);
+	
+	public static final RegistryObject<Block> ELECTRIC_LAPIS_BLOCK = BLOCKS.register("electric_lapis_block", () -> ElectricLapisBlock.init());
+	public static final RegistryObject<BlockItem> ELECTRIC_LAPIS_BLOCK_ITEM = registerBlockItem("electric_lapis_block", () -> ElectricLapisBlockItem.init());
 	
 	public static final RegistryObject<Item> LIGHTNING_SHARD = ITEMS.register("lightning_shard", () -> LightningShard.init());
 	public static final RegistryObject<LightningShardLootModifierSerializer> LIGHTNING_SHARD_LM = LOOT.register(

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CLC",
+    "LSL",
+    "CLC"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "S": {
+      "item": "lightningmobs:lightning_shard"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "item": "lightningmobs:electric_lapis_block",
+    "count": 8
+  }
+}
