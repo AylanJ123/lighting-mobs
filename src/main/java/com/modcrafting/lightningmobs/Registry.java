@@ -59,6 +59,7 @@ public class Registry {
 	);
 	
 	public static final RegistryObject<SoundEvent> LEFTOVER_CHARGE = registerSound("leftover_charge");
+	public static final RegistryObject<SoundEvent> THUNDER = registerSound("thunder");
 	
 	public static final CreativeModeTab MOD_TAB = new CreativeModeTab("lightningMobsTab") {
 		@Override
@@ -75,6 +76,7 @@ public class Registry {
 		ENTITIES.register(bus);
 		BLOCK_ENTITIES.register(bus);
 		LOOT.register(bus);
+		SOUNDS.register(bus);
 	}
 	
 	private static RegistryObject<BlockItem> registerBlockItem(String registryName, Supplier<? extends BlockItem> sup) {

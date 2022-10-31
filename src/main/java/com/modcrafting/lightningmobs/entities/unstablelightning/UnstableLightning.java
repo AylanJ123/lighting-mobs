@@ -35,12 +35,15 @@ public class UnstableLightning extends Entity {
 	
 	public void tick() {
 		super.tick();
-		if (this.life == 5) {
-			if (this.level.isClientSide()) {
-				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_THUNDER,
+		if (this.life > 1 && this.level.isClientSide()) {
+			if (life == 5) {
+				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), Registry.THUNDER.get(),
 						SoundSource.WEATHER, 10250.0F, 1.1F + this.random.nextFloat() * 0.2125F, true);
 				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT,
 						SoundSource.WEATHER, 2.25F, 0.8F + this.random.nextFloat() * 0.2125F, true);
+			} else if (life == 2) {
+				this.level.playLocalSound(this.getX(), this.getY(), this.getZ(), Registry.LEFTOVER_CHARGE.get(),
+						SoundSource.WEATHER, 2.25F, 0.4F + this.random.nextFloat() * 0.2F, true);
 			}
 		}
 		--this.life;

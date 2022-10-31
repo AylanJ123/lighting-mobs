@@ -18,5 +18,4 @@ public class ClientRegistry {
 			UnstableLightningRenderer::new
 		);
 	}
-	
 }
