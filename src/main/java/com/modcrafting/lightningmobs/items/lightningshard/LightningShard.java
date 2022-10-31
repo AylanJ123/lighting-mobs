@@ -1,5 +1,6 @@
 package com.modcrafting.lightningmobs.items.lightningshard;
 
+import com.modcrafting.lightningmobs.Registry;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 import com.modcrafting.lightningmobs.helpers.ItemHelpers;
 import net.minecraft.core.BlockPos;
@@ -7,7 +8,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -22,6 +22,11 @@ public class LightningShard extends Item {
 
 	private static final float SUMMON_CHANCE = 0.1f;
 	
+	@Override
+	public String getDescriptionId() {
+		return "item.lightningmobs.lightning_shard";
+	}
+	
 	public LightningShard(Properties properties) {
 		super(properties);
 	}
@@ -30,7 +35,7 @@ public class LightningShard extends Item {
 		LightningShard item = new LightningShard(new Properties()
 			.rarity(Rarity.RARE)
 			.stacksTo(MAX_STACK_SIZE)
-			.tab(CreativeModeTab.TAB_MISC)
+			.tab(Registry.MOD_TAB)
 		);
 		return item;
 	}

@@ -11,10 +11,14 @@ import com.modcrafting.lightningmobs.items.lightningshard.LightningShard;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShardLootModifierSerializer;
 import com.modcrafting.lightningmobs.items.lightningsword.LightningSword;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -28,6 +32,7 @@ public class Registry {
 	
 	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LMobs.MODID);
 	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LMobs.MODID);
+	private static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, LMobs.MODID);
 	private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, LMobs.MODID);
 	private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, LMobs.MODID);
 	private static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, LMobs.MODID);
@@ -53,6 +58,16 @@ public class Registry {
 		() -> configureLightning(EntityType.Builder.of(UnstableLightning::new, MobCategory.MISC)).build("")
 	);
 	
+	public static final RegistryObject<SoundEvent> LEFTOVER_CHARGE = registerSound("leftover_charge");
+	
+	public static final CreativeModeTab MOD_TAB = new CreativeModeTab("lightningMobsTab") {
+		@Override
+		public ItemStack makeIcon() {
+			return new ItemStack(LIGHTNING_SHARD.get());
+		}
+	};
+	
+	
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		BLOCKS.register(bus);
@@ -64,6 +79,10 @@ public class Registry {
 	
 	private static RegistryObject<BlockItem> registerBlockItem(String registryName, Supplier<? extends BlockItem> sup) {
 		return ITEMS.register(registryName, sup);
+	}
+	
+	private static RegistryObject<SoundEvent> registerSound(String registryName) {
+		return SOUNDS.register(registryName, () -> new SoundEvent(new ResourceLocation(LMobs.MODID, registryName)));
 	}
 	
 	private static EntityType.Builder<UnstableLightning> configureLightning(EntityType.Builder<UnstableLightning> builder) {

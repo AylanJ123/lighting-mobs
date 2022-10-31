@@ -1,0 +1,8 @@
+{
+  "leftover_charge": {
+    "subtitle": "sounds.lightningmobs.leftover_charge",
+    "sounds": [
+      "lightningmobs:leftover_charge"
+    ]
+  }
+}

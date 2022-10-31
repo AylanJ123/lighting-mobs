@@ -42,7 +42,7 @@ public class LightningBlock extends HorizontalDirectionalBlock implements Entity
 	}
 	
 	public static LightningBlock init() {
-		Material lbMaterial = new Material(MaterialColor.NONE, false, true, false, true, false, false, PushReaction.NORMAL);
+		Material lbMaterial = new Material(MaterialColor.NONE, false, true, false, true, false, false, PushReaction.IGNORE);
 		LightningBlock block = new LightningBlock(Properties.of(lbMaterial)
 				.destroyTime(10)
 				.explosionResistance(INDESTRUCTIBLE)

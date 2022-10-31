@@ -2,5 +2,6 @@
 	"block.lightningmobs.lightning_block": "Lightning Block",
 	"item.lightningmobs.lightning_shard": "Lightning Shard",
 	"item.lightningmobs.lightning_charge": "Lightning Charge",
-	"item.lightningmobs.lightning_charge": "Lightning Sword"
+	"item.lightningmobs.lightning_sword": "Lightning Sword",
+	"itemGroup.lightningMobsTab": "Lightning Mobs"
 }

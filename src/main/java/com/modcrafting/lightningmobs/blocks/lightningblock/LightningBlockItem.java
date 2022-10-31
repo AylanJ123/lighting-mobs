@@ -15,13 +15,18 @@ import net.minecraft.world.item.Rarity;
  */
 public class LightningBlockItem extends BlockItem {
 	
+	@Override
+	public String getDescriptionId() {
+		return "block.lightningmobs.lightning_block";
+	}
+	
 	private LightningBlockItem(Properties properties) {
 		super(Registry.LIGHTNING_BLOCK.get(), properties);
 	}
 	
 	public static LightningBlockItem init() {
 		Properties properties = new Properties();
-		properties.rarity(Rarity.RARE).stacksTo(MAX_STACK_SIZE).tab(CreativeModeTab.TAB_DECORATIONS);
+		properties.rarity(Rarity.RARE).stacksTo(MAX_STACK_SIZE).tab(Registry.MOD_TAB);
 		return new LightningBlockItem(properties);
 	}
 	

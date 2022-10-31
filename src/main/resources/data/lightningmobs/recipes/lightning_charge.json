@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "lightningmobs:lightning_shard"
+    },
+    {
+      "item": "lightningmobs:lightning_shard"
+    }
+  ],
+  "result": {
+    "item": "lightningmobs:lightning_charge",
+    "count": 1
+  }
+}
