@@ -25,7 +25,7 @@ public class LightningBlockItem extends BlockItem {
 	
 	public static LightningBlockItem init() {
 		Properties properties = new Properties();
-		properties.rarity(Rarity.COMMON).stacksTo(MAX_STACK_SIZE).tab(Registry.MOD_TAB);
+		properties.rarity(Rarity.RARE).stacksTo(MAX_STACK_SIZE).tab(Registry.MOD_TAB);
 		return new LightningBlockItem(properties);
 	}
 	

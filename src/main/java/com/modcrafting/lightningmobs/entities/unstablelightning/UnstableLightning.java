@@ -73,9 +73,10 @@ public class UnstableLightning extends Entity {
 				AreaEffectCloud cloud = EntityType.AREA_EFFECT_CLOUD.create(level);
 				cloud.setPotion(Potions.STRONG_SLOWNESS);
 				cloud.moveTo(position());
-				cloud.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 6));
+				cloud.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 18));
 				cloud.setRadius(3);
-				cloud.setDuration(60);
+				cloud.setDuration(80);
+				cloud.setWaitTime(0);
 				level.addFreshEntity(cloud);
 				for(Entity e : list1) lookForUpgradeable(e, this.blockPosition());
 			}
