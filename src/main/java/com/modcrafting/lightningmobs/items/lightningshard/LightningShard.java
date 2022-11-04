@@ -58,9 +58,9 @@ public class LightningShard extends Item {
 			Level level = context.getLevel();
 			if (level.random.nextFloat() <= chancesOnWeather(context.getLevel(), context.getClickedPos())) {
 				if (context.getLevel().isRainingAt(context.getClickedPos().above()))
-					UnstableLightning.SpawnLightning(level, context.getClickedPos());
+					UnstableLightning.SpawnLightning(level, context.getClickedPos().above());
 				else
-					UnstableLightning.SpawnVanillaLightning(level, context.getClickedPos());
+					UnstableLightning.SpawnVanillaLightning(level, context.getClickedPos().above());
 			}
 		});
 	}

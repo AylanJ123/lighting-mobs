@@ -1,0 +1,22 @@
+{
+  	"type": "minecraft:crafting_shaped",
+  	"pattern": [
+    	"S",
+    	"I",
+    	"F"
+  	],
+  	"key": {
+    	"S": {
+    	  	"item": "lightningmobs:lightning_shard"
+    	},
+    	"I": {
+    	  	"item": "minecraft:iron_ingot"
+    	},
+    	"F": {
+    		"item": "minecraft:feather"
+    	}	
+  	},
+  	"result": {
+   		"item": "lightningmobs:lightning_arrow"
+  	}
+}

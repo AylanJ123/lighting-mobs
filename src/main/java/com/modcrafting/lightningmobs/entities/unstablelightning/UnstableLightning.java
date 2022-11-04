@@ -88,14 +88,11 @@ public class UnstableLightning extends Entity {
 		return pDistance < d0 * d0;
 	}
 	
-	protected void defineSynchedData() {
-	}
+	protected void defineSynchedData() {}
 	
-	protected void readAdditionalSaveData(CompoundTag pCompound) {
-	}
+	protected void readAdditionalSaveData(CompoundTag pCompound) {}
 
-	protected void addAdditionalSaveData(CompoundTag pCompound) {
-	}
+	protected void addAdditionalSaveData(CompoundTag pCompound) {}
 
 	public Packet<?> getAddEntityPacket() {
 		return new ClientboundAddEntityPacket(this);
@@ -111,13 +108,13 @@ public class UnstableLightning extends Entity {
 
 	public static void SpawnLightning(Level level, BlockPos pos) {
 		UnstableLightning lightning = Registry.UNSTABLE_LIGHTNING.get().create(level);
-		lightning.moveTo(Vec3.atBottomCenterOf(pos.above()));
+		lightning.moveTo(Vec3.atBottomCenterOf(pos));
 		level.addFreshEntity(lightning);
 	}
 	
 	public static void SpawnVanillaLightning(Level level, BlockPos pos) {
 		LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(level);
-		lightning.moveTo(Vec3.atBottomCenterOf(pos.above()));
+		lightning.moveTo(Vec3.atBottomCenterOf(pos));
 		level.addFreshEntity(lightning);
 	}
 

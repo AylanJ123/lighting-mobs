@@ -1,5 +1,6 @@
 package com.modcrafting.lightningmobs;
 
+import com.modcrafting.lightningmobs.entities.lightningArrow.LightningArrowRenderer;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightningRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -16,6 +17,11 @@ public class ClientRegistry {
 		event.registerEntityRenderer(
 			Registry.UNSTABLE_LIGHTNING.get(),
 			UnstableLightningRenderer::new
+		);
+		event.registerEntityRenderer(
+			Registry.SHOT_LIGHTNING_ARROW.get(),
+			LightningArrowRenderer::new
+			
 		);
 	}
 }

@@ -10,5 +10,17 @@
     "sounds": [
       "lightningmobs:thunder"
     ]
+  },
+  "longer_zap": {
+    "subtitle": "sounds.lightningmobs.longer_zap",
+    "sounds": [
+      "lightningmobs:longer_zap"
+    ]
+  },
+  "zap": {
+    "subtitle": "sounds.lightningmobs.zap",
+    "sounds": [
+      "lightningmobs:zap"
+    ]
   }
 }

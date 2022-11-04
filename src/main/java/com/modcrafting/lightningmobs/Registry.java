@@ -7,7 +7,9 @@ import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBl
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockEntity;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
+import com.modcrafting.lightningmobs.entities.lightningArrow.LightningArrow;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
+import com.modcrafting.lightningmobs.items.lightningarrow.LightningArrowItem;
 import com.modcrafting.lightningmobs.items.lightningcharge.LightningCharge;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShard;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShardLootModifierSerializer;
@@ -32,6 +34,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class Registry {
 	
+	// Registers
 	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LMobs.MODID);
 	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LMobs.MODID);
 	private static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, LMobs.MODID);
@@ -39,6 +42,7 @@ public class Registry {
 	private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, LMobs.MODID);
 	private static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, LMobs.MODID);
 	
+	// Blocks
 	public static final RegistryObject<Block> LIGHTNING_BLOCK = BLOCKS.register("lightning_block", () -> LightningBlock.init());
 	public static final RegistryObject<BlockItem> LIGHTNING_BLOCK_ITEM = registerBlockItem("lightning_block", () -> LightningBlockItem.init());
 	public static final RegistryObject<BlockEntityType<LightningBlockEntity>> LIGHTNING_BLOCK_ENTITY = BLOCK_ENTITIES.register(
@@ -49,6 +53,7 @@ public class Registry {
 	public static final RegistryObject<Block> ELECTRIC_LAPIS_BLOCK = BLOCKS.register("electric_lapis_block", () -> ElectricLapisBlock.init());
 	public static final RegistryObject<BlockItem> ELECTRIC_LAPIS_BLOCK_ITEM = registerBlockItem("electric_lapis_block", () -> ElectricLapisBlockItem.init());
 	
+	// Items
 	public static final RegistryObject<Item> LIGHTNING_SHARD = ITEMS.register("lightning_shard", () -> LightningShard.init());
 	public static final RegistryObject<LightningShardLootModifierSerializer> LIGHTNING_SHARD_LM = LOOT.register(
 		"lightning_shard_lm", () -> new LightningShardLootModifierSerializer()
@@ -58,14 +63,24 @@ public class Registry {
 	
 	public static final RegistryObject<Item> LIGHTNING_SWORD = ITEMS.register("lightning_sword", () -> LightningSword.init());
 	
+	public static final RegistryObject<Item> LIGHTNING_ARROW = ITEMS.register("lightning_arrow", () -> LightningArrowItem.init());
+	public static final RegistryObject<EntityType<LightningArrow>> SHOT_LIGHTNING_ARROW = ENTITIES.register(
+		"lightning_arrow", (Supplier<? extends EntityType<LightningArrow>>)
+		() -> configureArrow(EntityType.Builder.of(LightningArrow::new, MobCategory.MISC)).build("")
+	);
+	
 	public static final RegistryObject<EntityType<UnstableLightning>> UNSTABLE_LIGHTNING = ENTITIES.register(
 		"unstable_lightning", (Supplier<? extends EntityType<UnstableLightning>>)
 		() -> configureLightning(EntityType.Builder.of(UnstableLightning::new, MobCategory.MISC)).build("")
 	);
 	
+	// Sounds
 	public static final RegistryObject<SoundEvent> LEFTOVER_CHARGE = registerSound("leftover_charge");
 	public static final RegistryObject<SoundEvent> THUNDER = registerSound("thunder");
+	public static final RegistryObject<SoundEvent> LONGER_ZAP = registerSound("longer_zap");
+	public static final RegistryObject<SoundEvent> ZAP = registerSound("zap");
 	
+	// Miscellaneous
 	public static final CreativeModeTab MOD_TAB = new CreativeModeTab("lightningMobsTab") {
 		@Override
 		public ItemStack makeIcon() {
@@ -73,7 +88,7 @@ public class Registry {
 		}
 	};
 	
-	
+	// Initialization and helpers
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		BLOCKS.register(bus);
@@ -99,6 +114,12 @@ public class Registry {
 			.fireImmune()
 			.clientTrackingRange(16)
 			.setShouldReceiveVelocityUpdates(false);
+	}
+	
+	private static EntityType.Builder<LightningArrow> configureArrow(EntityType.Builder<LightningArrow> builder) {
+		return builder.canSpawnFarFromPlayer()
+			.noSave().setShouldReceiveVelocityUpdates(true)
+			.sized(.25f, .25f);
 	}
 	
 }

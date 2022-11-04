@@ -39,9 +39,9 @@ public class LightningCharge extends Item {
 	public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand usedHand) {
 		return ItemHelpers.consumeAndCallback(player.level, player, stack, () -> {
 			if (player.level.isRainingAt(target.blockPosition()))
-				UnstableLightning.SpawnLightning(player.level, target.blockPosition());
+				UnstableLightning.SpawnLightning(player.level, target.blockPosition().above());
 			else
-				UnstableLightning.SpawnVanillaLightning(player.level, target.blockPosition());
+				UnstableLightning.SpawnVanillaLightning(player.level, target.blockPosition().above());
 		});
 	}
 	
@@ -49,9 +49,9 @@ public class LightningCharge extends Item {
 	public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
 		return ItemHelpers.consumeAndCallback(context.getLevel(), context.getPlayer(), stack, () -> {
 			if (context.getLevel().isRainingAt(context.getClickedPos().above()))
-				UnstableLightning.SpawnLightning(context.getLevel(), context.getClickedPos());
+				UnstableLightning.SpawnLightning(context.getLevel(), context.getClickedPos().above());
 			else
-				UnstableLightning.SpawnVanillaLightning(context.getLevel(), context.getClickedPos());
+				UnstableLightning.SpawnVanillaLightning(context.getLevel(), context.getClickedPos().above());
 		});
 	}
 	
