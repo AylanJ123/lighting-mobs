@@ -2,7 +2,7 @@
 
 Let a lightning drop on mobs and you might find out that some will transform into stronger creatures! This mod gives tools for you to spawn and defeat bosses or create strong weapons with destructive capabilities and crowd control.
 
-In the future, we will release an API to let you set your own bosses, you will need to send the registry name of the creature and the boss it will transform upon being struck by a special lightning.
+We accept IMC so you can register your own mob upgrading. Send it with any method string and the message must be a string like this: "upgradeable_registry_name#upgraded_mob_registry_name".
 
-This is what is planned for first alpha: Only left to do is the new mob and the lightning arrows.
+This is what is planned for first alpha: Only left to do is the new mob, electric ingot and lightning sword functions.
 ![Alpha release](https://i.ibb.co/1bz9DTV/Mod-Planification.png)
