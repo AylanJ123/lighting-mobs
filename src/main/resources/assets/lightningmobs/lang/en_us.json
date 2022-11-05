@@ -1,10 +1,15 @@
 {
 	"block.lightningmobs.lightning_block": "Lightning Block",
+	"block.lightningmobs.weather_channeler": "Weather Channeler",
 	"block.lightningmobs.electric_lapis_block": "Electric Lapis Block",
 	"item.lightningmobs.lightning_shard": "Lightning Shard",
 	"item.lightningmobs.lightning_charge": "Lightning Charge",
 	"item.lightningmobs.unstable_charge": "Unstable Charge",
 	"item.lightningmobs.lightning_sword": "Lightning Sword",
 	"item.lightningmobs.lightning_arrow": "Lightning Arrow",
+	"sounds.lightningmobs.leftover_charge": "Electric leftover excess",
+	"sounds.lightningmobs.thunder": "Explosive thunder",
+	"sounds.lightningmobs.longer_zap": "Electric discharge",
+	"sounds.lightningmobs.zap": "Zap",
 	"itemGroup.lightningMobsTab": "Lightning Mobs"
 }

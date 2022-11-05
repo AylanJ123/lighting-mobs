@@ -38,7 +38,6 @@ public class UnstableLightningRenderer extends EntityRenderer<UnstableLightning>
       }
 
       VertexConsumer vertexconsumer = pBuffer.getBuffer(RenderType.lightning());
-      vertexconsumer = vertexconsumer.color(245, 212, 66, 255);
       Matrix4f matrix4f = pMatrixStack.last().pose();
 
       for(int j = 0; j < 4; ++j) {
@@ -69,10 +68,9 @@ public class UnstableLightningRenderer extends EntityRenderer<UnstableLightning>
                   f3 += (float)(random1.nextInt(31) - 15);
                }
 
-               /*float f6 = 0.5F;
-               float f7 = 0.45F;
-               float f8 = 0.45F;
-               float f9 = 0.5F;*/
+               float f6 = 1F;
+               float f7 = 0.95F;
+               float f8 = 0.7F;
                float f10 = 0.1F + (float)j * 0.2F;
                if (k == 0) {
                   f10 *= (float)j1 * 0.1F + 1.0F;
@@ -83,10 +81,10 @@ public class UnstableLightningRenderer extends EntityRenderer<UnstableLightning>
                   f11 *= ((float)j1 - 1.0F) * 0.1F + 1.0F;
                }
 
-               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, 0.45F, 0.45F, 0.5F, f10, f11, false, false, true, false);
-               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, 0.45F, 0.45F, 0.5F, f10, f11, true, false, true, true);
-               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, 0.45F, 0.45F, 0.5F, f10, f11, true, true, false, true);
-               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, 0.45F, 0.45F, 0.5F, f10, f11, false, true, false, false);
+               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, f6, f7, f8, f10, f11, false, false, true, false);
+               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, f6, f7, f8, f10, f11, true, false, true, true);
+               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, f6, f7, f8, f10, f11, true, true, false, true);
+               quad(matrix4f, vertexconsumer, f2, f3, j1, f4, f5, f6, f7, f8, f10, f11, false, true, false, false);
             }
          }
       }

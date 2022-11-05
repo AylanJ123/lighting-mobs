@@ -1,6 +1,7 @@
 package com.modcrafting.lightningmobs.items.lightningcharge;
 
 import com.modcrafting.lightningmobs.Registry;
+import com.modcrafting.lightningmobs.blocks.weather_channeler.WeatherChanneler;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 import com.modcrafting.lightningmobs.helpers.ItemHelpers;
 import net.minecraft.world.InteractionHand;
@@ -47,6 +48,8 @@ public class LightningCharge extends Item {
 	
 	@Override
 	public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
+		if (context.getLevel().getBlockState(context.getClickedPos()).getBlock() instanceof WeatherChanneler)
+			return InteractionResult.PASS;
 		return ItemHelpers.consumeAndCallback(context.getLevel(), context.getPlayer(), stack, () -> {
 			if (context.getLevel().isRainingAt(context.getClickedPos().above()))
 				UnstableLightning.SpawnLightning(context.getLevel(), context.getClickedPos().above());

@@ -1,0 +1,9 @@
+{
+	"parent": "block/cube_bottom_top",
+    "textures": {
+        "bottom": "lightningmobs:block/weather_channeler_bottom",
+        "top": "lightningmobs:block/weather_channeler_top",
+        "side": "lightningmobs:block/weather_channeler_side",
+        "particle": "lightningmobs:block/weather_channeler_side"
+    }
+}

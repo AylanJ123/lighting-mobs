@@ -29,12 +29,8 @@ import net.minecraft.world.level.material.PushReaction;
  */
 public class LightningBlock extends HorizontalDirectionalBlock {
 	
-	private static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
+	public static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
 	
-	public static BooleanProperty getCanSummon() {
-		return CAN_SUMMON;
-	}
-
 	private LightningBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(
@@ -50,7 +46,7 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 				.requiresCorrectToolForDrops()
 				.sound(SoundType.METAL)
 				.strength(2, 300)
-				.lightLevel((state) -> 6));
+				.lightLevel((state) -> state.getValue(CAN_SUMMON) ? 8 : 0));
 		return block;
 	}
 	
@@ -76,7 +72,7 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 		level.setBlock(pos, state.setValue(CAN_SUMMON, false), UPDATE_ALL);
 		level.setBlock(
 			pos, state.setValue(
-				LightningBlock.getCanSummon(), false
+				CAN_SUMMON, false
 			),
 			Block.UPDATE_ALL
 		);
@@ -88,7 +84,7 @@ public class LightningBlock extends HorizontalDirectionalBlock {
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
 		level.setBlock(
 			pos, state.setValue(
-				LightningBlock.getCanSummon(), true
+				CAN_SUMMON, true
 			),
 			Block.UPDATE_ALL
 		);

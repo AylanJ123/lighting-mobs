@@ -21,7 +21,6 @@ public class ClientRegistry {
 		event.registerEntityRenderer(
 			Registry.SHOT_LIGHTNING_ARROW.get(),
 			LightningArrowRenderer::new
-			
 		);
 	}
 }

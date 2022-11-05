@@ -39,15 +39,20 @@ public class LightningArrow extends Arrow {
 	}
 	
 	@Override
+	public EntityType<?> getType() {
+		return Registry.SHOT_LIGHTNING_ARROW.get();
+	}
+	
+	@Override
 	protected void onHit(HitResult result) {
 		super.onHit(result);
 		if (alreadyHit) return;
 		BlockPos pos = new BlockPos(result.getLocation());
 		alreadyHit = true;
 		if (level.isRainingAt(pos))
-			UnstableLightning.SpawnLightning(level, pos.below());
+			UnstableLightning.SpawnLightning(level, pos);
 		else
-			UnstableLightning.SpawnVanillaLightning(level, pos.below());
+			UnstableLightning.SpawnVanillaLightning(level, pos);
 	}
 	
 }

@@ -6,6 +6,8 @@ import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBl
 import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBlockItem;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
+import com.modcrafting.lightningmobs.blocks.weather_channeler.WeatherChanneler;
+import com.modcrafting.lightningmobs.blocks.weather_channeler.WeatherChannelerItem;
 import com.modcrafting.lightningmobs.entities.lightningArrow.LightningArrow;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 import com.modcrafting.lightningmobs.items.lightningarrow.LightningArrowItem;
@@ -48,6 +50,8 @@ public class Registry {
 		"lightning_block_entity", (Supplier<? extends BlockEntityType<LightningBlockEntity>>)
 		() -> BlockEntityType.Builder.of(LightningBlockEntity::new, LIGHTNING_BLOCK.get()).build(null)
 	);*/
+	public static final RegistryObject<Block> WEATHER_CHANNELER = BLOCKS.register("weather_channeler", () -> WeatherChanneler.init());
+	public static final RegistryObject<BlockItem> WEATHER_CHANNELER_ITEM = registerBlockItem("weather_channeler", () -> WeatherChannelerItem.init());
 	
 	public static final RegistryObject<Block> ELECTRIC_LAPIS_BLOCK = BLOCKS.register("electric_lapis_block", () -> ElectricLapisBlock.init());
 	public static final RegistryObject<BlockItem> ELECTRIC_LAPIS_BLOCK_ITEM = registerBlockItem("electric_lapis_block", () -> ElectricLapisBlockItem.init());
@@ -70,7 +74,7 @@ public class Registry {
 	);
 	
 	public static final RegistryObject<EntityType<UnstableLightning>> UNSTABLE_LIGHTNING = ENTITIES.register(
-		"unstable_lightning", (Supplier<? extends EntityType<UnstableLightning>>)
+		"unstable_lightning", (Supplier<? extends EntityType<UnstableLightning>>) 
 		() -> configureLightning(EntityType.Builder.of(UnstableLightning::new, MobCategory.MISC)).build("")
 	);
 	

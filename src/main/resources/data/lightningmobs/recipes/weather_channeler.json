@@ -1,0 +1,25 @@
+{
+  	"type": "minecraft:crafting_shaped",
+  	"pattern": [
+    	"SIS",
+    	"R R",
+    	"SDS"
+  	],
+  	"key": {
+    	"S": {
+    	  	"item": "lightningmobs:lightning_shard"
+    	},
+    	"I": {
+    	  	"item": "minecraft:iron_ingot"
+    	},
+    	"R": {
+    		"item": "minecraft:redstone"
+    	}	,
+    	"D": {
+    		"item": "minecraft:diamond_block"
+    	}
+  	},
+  	"result": {
+   		"item": "lightningmobs:weather_channeler"
+  	}
+}
