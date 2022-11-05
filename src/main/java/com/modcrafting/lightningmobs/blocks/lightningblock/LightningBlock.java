@@ -3,19 +3,20 @@
  */
 package com.modcrafting.lightningmobs.blocks.lightningblock;
 
+import java.util.Random;
+
 import com.modcrafting.lightningmobs.Registry;
+import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -26,7 +27,7 @@ import net.minecraft.world.level.material.PushReaction;
 /**
  * @author AylanJ123
  */
-public class LightningBlock extends HorizontalDirectionalBlock implements EntityBlock {
+public class LightningBlock extends HorizontalDirectionalBlock {
 	
 	private static final BooleanProperty CAN_SUMMON = BooleanProperty.create("can_summon");
 	
@@ -73,18 +74,25 @@ public class LightningBlock extends HorizontalDirectionalBlock implements Entity
 		if (level.isClientSide()) return;
 		if (!state.getValue(CAN_SUMMON)) return;
 		level.setBlock(pos, state.setValue(CAN_SUMMON, false), UPDATE_ALL);
-		((LightningBlockEntity)level.getBlockEntity(pos)).summon(level, pos, state);
-	}
-
-	@Override
-	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new LightningBlockEntity(pos, state);
+		level.setBlock(
+			pos, state.setValue(
+				LightningBlock.getCanSummon(), false
+			),
+			Block.UPDATE_ALL
+		);
+		UnstableLightning.SpawnLightning(level, pos.above());
+		level.scheduleTick(pos, this, 300);
 	}
 	
 	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
-			BlockEntityType<T> type) {
-		return type == Registry.LIGHTNING_BLOCK_ENTITY.get() ? LightningBlockEntity::tick : null;
+	public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+		level.setBlock(
+			pos, state.setValue(
+				LightningBlock.getCanSummon(), true
+			),
+			Block.UPDATE_ALL
+		);
+		level.playSound(null, pos, Registry.ZAP.get(), SoundSource.BLOCKS, 1, 1);
 	}
 	
 }

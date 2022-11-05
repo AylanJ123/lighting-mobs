@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBlock;
 import com.modcrafting.lightningmobs.blocks.electric_lapis_block.ElectricLapisBlockItem;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlock;
-import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockEntity;
 import com.modcrafting.lightningmobs.blocks.lightningblock.LightningBlockItem;
 import com.modcrafting.lightningmobs.entities.lightningArrow.LightningArrow;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
@@ -25,7 +24,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -39,17 +37,17 @@ public class Registry {
 	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LMobs.MODID);
 	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LMobs.MODID);
 	private static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, LMobs.MODID);
-	private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, LMobs.MODID);
+	//private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, LMobs.MODID);
 	private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, LMobs.MODID);
 	private static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT = DeferredRegister.create(ForgeRegistries.Keys.LOOT_MODIFIER_SERIALIZERS, LMobs.MODID);
 	
 	// Blocks
 	public static final RegistryObject<Block> LIGHTNING_BLOCK = BLOCKS.register("lightning_block", () -> LightningBlock.init());
 	public static final RegistryObject<BlockItem> LIGHTNING_BLOCK_ITEM = registerBlockItem("lightning_block", () -> LightningBlockItem.init());
-	public static final RegistryObject<BlockEntityType<LightningBlockEntity>> LIGHTNING_BLOCK_ENTITY = BLOCK_ENTITIES.register(
+	/*public static final RegistryObject<BlockEntityType<LightningBlockEntity>> LIGHTNING_BLOCK_ENTITY = BLOCK_ENTITIES.register(
 		"lightning_block_entity", (Supplier<? extends BlockEntityType<LightningBlockEntity>>)
 		() -> BlockEntityType.Builder.of(LightningBlockEntity::new, LIGHTNING_BLOCK.get()).build(null)
-	);
+	);*/
 	
 	public static final RegistryObject<Block> ELECTRIC_LAPIS_BLOCK = BLOCKS.register("electric_lapis_block", () -> ElectricLapisBlock.init());
 	public static final RegistryObject<BlockItem> ELECTRIC_LAPIS_BLOCK_ITEM = registerBlockItem("electric_lapis_block", () -> ElectricLapisBlockItem.init());
@@ -96,7 +94,7 @@ public class Registry {
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
 		ENTITIES.register(bus);
-		BLOCK_ENTITIES.register(bus);
+		//BLOCK_ENTITIES.register(bus);
 		LOOT.register(bus);
 		SOUNDS.register(bus);
 	}
