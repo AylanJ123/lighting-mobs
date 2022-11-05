@@ -65,8 +65,8 @@ public class UnstableLightning extends Entity {
 				List<Entity> list1 = this.level
 					.getEntities(
 						this, new AABB(
-							this.getX() - 1.0D, this.getY() - 1.0D, this.getZ() - 1.0D,
-							this.getX() + 1.0D, this.getY() + 2.0D + 1.0D, this.getZ() + 2.0D),
+							this.getX() - 2.0D, this.getY() - 2.0D, this.getZ() - 2.0D,
+							this.getX() + 2.0D, this.getY() + 3.0D + 2.0D, this.getZ() + 3.0D),
 						Entity::isAlive
 					);
 				alreadyHit = true;
@@ -78,7 +78,7 @@ public class UnstableLightning extends Entity {
 				cloud.setDuration(80);
 				cloud.setWaitTime(0);
 				level.addFreshEntity(cloud);
-				for(Entity e : list1) lookForUpgradeable(e, this.blockPosition());
+				for(Entity e : list1) lookForUpgradeable(e);
 			}
 		}
 	}
@@ -118,7 +118,7 @@ public class UnstableLightning extends Entity {
 		level.addFreshEntity(lightning);
 	}
 
-	private static void lookForUpgradeable(Entity entity, BlockPos pos) {
+	private static void lookForUpgradeable(Entity entity) {
 		boolean didSpawn = false;
 		boolean shouldSpawn = false;
 		for (Pair<String, String> pair : upgradeables) {
@@ -131,7 +131,7 @@ public class UnstableLightning extends Entity {
 						didSpawn = true;
 						entity.discard();
 						Entity spawnedEntity = map.getValue().create(entity.level);
-						spawnedEntity.moveTo(Vec3.upFromBottomCenterOf(pos, 1));
+						spawnedEntity.moveTo(entity.blockPosition(), 0, 0);
 						((LivingEntity) spawnedEntity).addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 255));
 						entity.level.addFreshEntity(spawnedEntity);
 						break;

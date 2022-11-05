@@ -12,6 +12,10 @@ import net.minecraft.world.level.Level;
 
 public class LightningArrowItem extends ArrowItem {
 
+	public String getDescriptionId() {
+		return "item.lightningmobs.lightning_arrow";
+	}
+	
 	private LightningArrowItem(Properties properties) {
 		super(properties);
 	}

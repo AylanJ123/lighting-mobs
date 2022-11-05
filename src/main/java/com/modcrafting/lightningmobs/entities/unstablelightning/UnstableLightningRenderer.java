@@ -38,6 +38,7 @@ public class UnstableLightningRenderer extends EntityRenderer<UnstableLightning>
       }
 
       VertexConsumer vertexconsumer = pBuffer.getBuffer(RenderType.lightning());
+      vertexconsumer = vertexconsumer.color(0f, 255, 255, 255);
       Matrix4f matrix4f = pMatrixStack.last().pose();
 
       for(int j = 0; j < 4; ++j) {

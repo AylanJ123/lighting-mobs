@@ -3,6 +3,7 @@
 	"block.lightningmobs.electric_lapis_block": "Electric Lapis Block",
 	"item.lightningmobs.lightning_shard": "Lightning Shard",
 	"item.lightningmobs.lightning_charge": "Lightning Charge",
+	"item.lightningmobs.unstable_charge": "Unstable Charge",
 	"item.lightningmobs.lightning_sword": "Lightning Sword",
 	"item.lightningmobs.lightning_arrow": "Lightning Arrow",
 	"itemGroup.lightningMobsTab": "Lightning Mobs"

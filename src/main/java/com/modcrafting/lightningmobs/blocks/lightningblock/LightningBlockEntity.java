@@ -34,7 +34,7 @@ public class LightningBlockEntity extends BlockEntity {
 			),
 			Block.UPDATE_ALL
 		);
-		UnstableLightning.SpawnLightning(level, pos);
+		UnstableLightning.SpawnLightning(level, pos.above());
 	}
 	
 	public static void tick(Level level, BlockPos pos, BlockState state, BlockEntity blockEntity) {

@@ -11,6 +11,7 @@ import com.modcrafting.lightningmobs.entities.lightningArrow.LightningArrow;
 import com.modcrafting.lightningmobs.entities.unstablelightning.UnstableLightning;
 import com.modcrafting.lightningmobs.items.lightningarrow.LightningArrowItem;
 import com.modcrafting.lightningmobs.items.lightningcharge.LightningCharge;
+import com.modcrafting.lightningmobs.items.lightningcharge.UnstableCharge;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShard;
 import com.modcrafting.lightningmobs.items.lightningshard.LightningShardLootModifierSerializer;
 import com.modcrafting.lightningmobs.items.lightningsword.LightningSword;
@@ -59,7 +60,8 @@ public class Registry {
 		"lightning_shard_lm", () -> new LightningShardLootModifierSerializer()
 	);
 	
-	public static final RegistryObject<Item> LIGHTNING_CARGE = ITEMS.register("lightning_charge", () -> LightningCharge.init());
+	public static final RegistryObject<Item> LIGHTNING_CHARGE = ITEMS.register("lightning_charge", () -> LightningCharge.init());
+	public static final RegistryObject<Item> UNSTABLE_CHARGE = ITEMS.register("unstable_charge", () -> UnstableCharge.init());
 	
 	public static final RegistryObject<Item> LIGHTNING_SWORD = ITEMS.register("lightning_sword", () -> LightningSword.init());
 	
