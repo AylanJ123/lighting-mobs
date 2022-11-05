@@ -5,4 +5,4 @@ Let a lightning drop on mobs and you might find out that some will transform int
 In the future, we will release an API to let you set your own bosses, you will need to send the registry name of the creature and the boss it will transform upon being struck by a special lightning.
 
 This is what is planned for first alpha: Only left to do is the new mob and the lightning arrows.
-![Alpha release](https://i.ibb.co/Mc31Jxq/Mod-Planification-Alpha.png)
+![Alpha release](https://i.ibb.co/1bz9DTV/Mod-Planification.png)
